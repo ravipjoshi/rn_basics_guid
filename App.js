@@ -12,7 +12,9 @@ export default function App() {
   
   const addGoal = () => {
     console.log(enteredGoal);
-    setGoal(currentGoals=>[...currentGoals,{key: Math.random().toString(),value:enteredGoal}])
+    setGoal(currentGoals=>[...currentGoals,
+      {id: Math.random().toString(),
+        value:enteredGoal}])
   }
   
   
@@ -30,6 +32,7 @@ export default function App() {
           <Button title="+"  onPress={addGoal}/>
       </View>
       <FlatList
+        keyExtractor={(item,index)=> item.id}
         data={goals}
         renderItem={itemData =>(
       
