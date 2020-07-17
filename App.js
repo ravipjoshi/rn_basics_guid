@@ -14,6 +14,11 @@ export default function App() {
       {id: Math.random().toString(), value: goalTitle}])
   }
   
+  const removeGoalHandler =goalId => {
+    setGoals(currentGoals =>{
+      return currentGoals.filter((goal)=> goal.id !== goalId); 
+      });
+  }
   
   
   return (
@@ -23,7 +28,13 @@ export default function App() {
       <FlatList
         keyExtractor={(item,index)=> item.id}
         data={goals}
-        renderItem={itemData => <GoalItem onDelete={()=>console.log("Pressing the item")}title={itemData.item.value}/>}
+        renderItem={itemData => (
+          <GoalItem 
+            id={itemData.item.id} 
+            onDelete={removeGoalHandler}
+            title={itemData.item.value}
+            />
+            )}
       />
     </View>
   );
