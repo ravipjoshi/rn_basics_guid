@@ -14,7 +14,8 @@ const GoalInput = props => {
             onChangeText = {inputHandler}
             value={enteredGoal}
           />
-          <Button title="+"  onPress={props.onAddGoal.bind(this, enteredGoal)}/>
+          <Button title="+"  onPress={()=>props.onAddGoal(enteredGoal)}/>
+           
       </View>
     );
 };
@@ -29,5 +30,6 @@ const styles = StyleSheet.create({
         width: '80%', padding:10
       },
 })
+//<Button title="+"  onPress={props.onAddGoal.bind(this,enteredGoal)}/>
 
 export default GoalInput;

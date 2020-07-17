@@ -9,11 +9,9 @@ export default function App() {
   
   
   
-  const addGoal = goalTitle => {
-    console.log(enteredGoal);
-    setGoal(currentGoals=>[...currentGoals,
-      {id: Math.random().toString(),
-        value:enteredGoal}])
+  const addGoalHandler = goalTitle => {
+       setGoal(currentGoals=>[...currentGoals,
+      {id: Math.random().toString(), value: goalTitle}])
   }
   
   
@@ -21,11 +19,11 @@ export default function App() {
   return (
     
     <View style={styles.screen}>
-      <GoalInput onAddGoal={addGoal} />    
+      <GoalInput onAddGoal={addGoalHandler} />    
       <FlatList
         keyExtractor={(item,index)=> item.id}
         data={goals}
-        renderItem={itemData => <GoalItem title={itemData.item.value}/>}
+        renderItem={itemData => <GoalItem onDelete={()=>console.log("Pressing the item")}title={itemData.item.value}/>}
       />
     </View>
   );
