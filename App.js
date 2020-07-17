@@ -11,7 +11,8 @@ export default function App() {
   
   const addGoalHandler = goalTitle => {
        setGoal(currentGoals=>[...currentGoals,
-      {id: Math.random().toString(), value: goalTitle}])
+      {id: Math.random().toString(), value: goalTitle}]);
+      setIsAddMode(false);
   }
   
   const removeGoalHandler =goalId => {
