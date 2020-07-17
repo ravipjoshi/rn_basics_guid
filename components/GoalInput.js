@@ -1,9 +1,9 @@
 import React,{useState} from 'react';
-import {View, Text, Stylesheets, TextInput, Button} from 'react-native';
+import {View, Text, StyleSheet, TextInput, Button} from 'react-native';
 
-const GoalInput = () => {
+const GoalInput = props => {
     const [enteredGoal,setEnteredGoal] = useState('');
-    const inputHandler = (enteredText) => {
+    const inputHandler = enteredText => {
         setEnteredGoal(enteredText)
       }
     return (
@@ -14,12 +14,12 @@ const GoalInput = () => {
             onChangeText = {inputHandler}
             value={enteredGoal}
           />
-          <Button title="+"  onPress={()=>props.onAddGoal(enteredGoal)}/>
+          <Button title="+"  onPress={props.onAddGoal.bind(this, enteredGoal)}/>
       </View>
     );
 };
 
-const styles = Stylesheets.create({
+const styles = StyleSheet.create({
     InputContainer:{
         flexDirection: 'row', 
         justifyContent: 'space-between', 
